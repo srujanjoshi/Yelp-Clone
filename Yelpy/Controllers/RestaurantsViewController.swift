@@ -14,6 +14,7 @@ class RestaurantsViewController: UIViewController {
     // ––––– TODO: Add storyboard Items (i.e. tableView + Cell + configurations for Cell + cell outlets)
     // ––––– TODO: Next, place TableView outlet here
     
+    @IBOutlet weak var tableView: UITableView!
     
     // –––––– TODO: Initialize restaurantsArray
     
