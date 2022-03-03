@@ -27,8 +27,9 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.rowHeight = 150
         getAPIData()
+        
 
     }
     
@@ -56,7 +57,6 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         let restaurant = restaurantsArray[indexPath.row]
         
         //Set Label to restaurant name for each cell
-        
         cell.label.text = restaurant["name"] as? String ?? ""
         
         //Set image of restaurant
@@ -64,6 +64,15 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
             let imageUrl = URL(string: imageUrlString)
             cell.restaurantImage.af.setImage(withURL: imageUrl!)
         }
+        
+        guard let categories = restaurant["categories"] as? [[String:String]] else {
+            return cell
+        }
+        //Set the Cusine label for each cell
+        cell.categoryLabel.text = categories[0]["title"] ?? "Other"
+        
+        
+
         return cell
     }
     
