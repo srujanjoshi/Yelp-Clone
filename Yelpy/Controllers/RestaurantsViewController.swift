@@ -65,6 +65,32 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
             cell.restaurantImage.af.setImage(withURL: imageUrl!)
         }
         
+        //Set the rating of the restaurant
+        let rating: Double = restaurant["rating"] as? Double ?? 0
+        switch rating {
+        case 5:
+            cell.ratingImage.image = UIImage(named: "regular_5")
+        case 4.5:
+            cell.ratingImage.image = UIImage(named: "regular_4_half")
+        case 4.0:
+            cell.ratingImage.image = UIImage(named: "regular_4")
+        case 3.5:
+            cell.ratingImage.image = UIImage(named: "regular_3_half")
+        case 3.0:
+            cell.ratingImage.image = UIImage(named: "regular_3")
+        case 2.5:
+            cell.ratingImage.image = UIImage(named: "regular_2_half")
+        case 2.0:
+            cell.ratingImage.image = UIImage(named: "regular_2")
+        case 1.5:
+            cell.ratingImage.image = UIImage(named: "regular_1_half")
+        case 1.0:
+            cell.ratingImage.image = UIImage(named: "regular_1")
+        default:
+            cell.ratingImage.image = UIImage(named: "regular_0")
+            
+        }
+        
         guard let categories = restaurant["categories"] as? [[String:String]] else {
             return cell
         }
