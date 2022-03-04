@@ -59,12 +59,17 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         //Set Label to restaurant name for each cell
         cell.label.text = restaurant["name"] as? String ?? ""
         
+        //Set Phone Number fo Restaurant
+        cell.phoneNumber.text = restaurant["display_phone"] as? String ?? ""
+        
         //Set image of restaurant
         if let imageUrlString = restaurant["image_url"] as? String {
             let imageUrl = URL(string: imageUrlString)
             cell.restaurantImage.af.setImage(withURL: imageUrl!)
         }
         
+        //Set the number of views for the restaurant
+        cell.reviewCount.text = String(restaurant["review_count"] as? Int ?? 0)
         //Set the rating of the restaurant
         let rating: Double = restaurant["rating"] as? Double ?? 0
         switch rating {
